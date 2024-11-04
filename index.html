@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #D9D9D9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .top-image {
+            width: 25%;
+            height: auto;
+            border: 5px solid #d9d9d9;
+            margin-bottom: 20px;
+        }
+        .login-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(206, 8, 8, 0.1);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        .circle-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #a3a1a1;
+            margin: 20px auto;
+            border: 3px solid #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .circle-image img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-submit {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #5383FF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        .vitamins-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(206, 8, 8, 0.1);
+            width: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            display: none; /* Initially hidden */
+        }
+        .vitamin {
+            padding: 20px;
+            border: 1px solid #25326D;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .vitamin:hover {
+            background-color: #25326D;
+        }
+        .instruction-text {
+            font-size: 24px;
+            margin: 20px;
+            display: none; /* Initially hidden */
+        }
+        .symptom-info {
+            background-color: #E0E0E0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 500px;
+            margin: 0 auto; /* Center horizontally */
+            position: absolute; /* Position absolutely to center */
+            top: 50%; /* Move to the middle of the page */
+            left: 50%; /* Move to the middle of the page */
+            transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+            display: none; /* Initially hidden */
+        }
+        .symptom-info h3 {
+            color: #25326D;
+            margin-bottom: 20px; /* Space between title and content */
+        }
+        .symptom-info img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <img src="Captura de tela 2024-05-09 131620.png" alt="Logo Imagem" class="top-image" id="topImage">
+        <div class="login-container" id="loginContainer">
+            <div class="circle-image">
+                <img src="iconeUsuario.png" alt="Logo Start Saúde">
+            </div>
+            <h2>Faça seu login no <br> Start Saúde</h2>
+            <form id="loginForm">
+                <input type="text" name="email" placeholder="Digite seu e-mail" required>
+                <input type="password" name="senha" placeholder="Digite sua senha" required>
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+        </div>
+        <div class="instruction-text" id="instructionText">Qual é o seu sintoma?</div>
+        <div class="vitamins-container" id="vitaminsContainer">
+            <!-- Vitamin buttons -->
+            <div class="vitamin" onclick="showVitaminDetail('Mau humor ou depressão', 'A vitamina D é conhecida como a vitamina do sol, pois é sintetizada pela pele quando exposta à luz solar. Ela desempenha um papel crucial na regulação do humor e na prevenção da depressão. Além da exposição ao sol, você pode obter vitamina D a partir de peixes gordurosos como salmão e sardinha, gema de ovo e alimentos fortificados.', 'shutterstock_1131287756-scaled.jpg')">MAU HUMOR OU DEPRESSÃO</div>
+            <div class="vitamin" onclick="showVitaminDetail('Dificuldade de concentração', 'A vitamina B6 é importante para a saúde cerebral e pode ajudar na função cognitiva e concentração. Alimentos ricos em vitamina B6 incluem frango, peixe, bananas, batatas, cereais integrais e nozes.', 'Piridoxina-Vitamina-B6-beneficios-e-fontes-Guia-completo-1.jpg')">DIFICULDADE DE CONCENTRAÇÃO</div>
+            <div class="vitamin" onclick="showVitaminDetail('Fadiga', 'A vitamina B12 é essencial para a produção de glóbulos vermelhos e ajuda na conversão de alimentos em energia. Para adquirir vitamina B12, você pode consumir alimentos como carne vermelha, peixe, ovos e laticínios. Para vegetarianos e veganos, alimentos fortificados ou suplementos podem ser necessários.', 'B12.png')">FADIGA</div>
+            <div class="vitamin" onclick="showVitaminDetail('Fraqueza muscular', 'A vitamina E é um antioxidante que protege os músculos do estresse oxidativo e ajuda na função muscular. Você pode obter vitamina E de alimentos como nozes, sementes, óleos vegetais, espinafre e abacate.', 'vitaminaeoqueefuncaoealimentos.webp')">FRAQUEZA MUSCULAR</div>
+            <div class="vitamin" onclick="showVitaminDetail('Problemas de visão noturna', 'A vitamina A é essencial para a saúde ocular, especialmente para a visão noturna. Ela pode ser encontrada em alimentos como fígado, cenoura, batata-doce, espinafre e manga.', 'Design-sem-nome-2023-08-16T144249.158.webp')">PROBLEMAS DE VISÃO NOTURNA</div>
+            <div class="vitamin" onclick="showVitaminDetail('Resistência reduzida a infecções', 'A vitamina C é conhecida por seu papel na função imunológica, ajudando a fortalecer o sistema imunológico e reduzir o tempo de recuperação de infecções. Fontes ricas em vitamina C incluem frutas cítricas como laranjas e limões, morangos, pimentões e brócolis.', 'shutterstock_1679553382-1-1-1.jpg')">RESISTÊNCIA REDUZIDA A INFECÇÕES</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            document.getElementById('loginContainer').style.display = 'none'; // Hide the login form
+            document.getElementById('instructionText').style.display = 'block'; // Show the instruction text
+            document.getElementById('vitaminsContainer').style.display = 'grid'; // Show the vitamins screen
+        });
+
+        function showVitaminDetail(title, description, imageUrl) {
+            document.getElementById('topImage').style.display = 'none'; // Hide the logo
+            document.getElementById('instructionText').style.display = 'none'; // Hide the instruction text
+            document.getElementById('vitaminsContainer').style.display = 'none'; // Hide the vitamins container
+
+            const infoContainer = document.createElement('div');
+            infoContainer.classList.add('symptom-info');
+            infoContainer.innerHTML = `
+                <h3>${title}</h3>
+                <p>${description}</p>
+                <img src="${imageUrl}" alt="${title}">
+                <button onclick="closeVitaminDetail()">Fechar</button>
+            `;
+            document.body.appendChild(infoContainer);
+            infoContainer.style.display = 'block'; // Show the vitamin detail
+        }
+
+        function closeVitaminDetail() {
+            const symptomInfo = document.querySelector('.symptom-info');
+            if (symptomInfo) {
+                symptomInfo.remove(); // Remove the vitamin detail
+            }
+            document.getElementById('topImage').style.display = 'block'; // Show the logo again
+            document.getElementById('instructionText').style.display = 'block'; // Show the instruction text again
+            document.getElementById('vitaminsContainer').style.display = 'grid'; // Show the vitamins container again
+        }
+    </script>
+</body>
+</html>
